@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //对当前页面所有JS代码都是用严格模式
+    //'use strict'
+    var str = "abcdef";
+    str.length = 1;
+    console.log(str.length);
+    //对函数内部JS代码使用严格模式
+    function fn1() {
+        'use strict'
+    }
+</script>
+</html>

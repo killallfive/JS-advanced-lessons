@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //ES = ECMAScript简写
+    //ES5 ES6是ES最主流的两个版本
+    //JavaScript在ES5标准下没有块作用域
+    if(true) {
+        var a = 1;
+    }
+    a = 2;
+    console.log(a);
+
+    for(var i = 0; i < 3; i++) {
+
+    }
+    console.log(i);
+
+    //如果变量不使用var声明
+    //变量会自动提升为全局变量
+    function fn1() {
+        //'use strict'
+        //如果使用严格模式，不用var定义变量，会报错
+        username = "zhangsan";
+    }
+    fn1();
+    console.log(username);
+
+    function fn2() {
+        //普通函数的内部this指向windows对象
+        //严格模式下，this指向undefined
+        //'use strict'
+        console.log(this);
+    }
+    fn2();
+</script>
+</html>
