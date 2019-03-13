@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //避免滥用全局变量
+    var x = 10;
+    document.onclick = function () {
+    //console.log("x = ",x);
+    alert("x = "+x);
+    };
+    //避免全局污染，使用IIFE函数立即执行表达式
+    var xx = 234;
+    if(234 == xx) {
+        console.log("相等");
+    }
+    //反写是为了保证程序可以正确运行
+    //正写少写等号无法发现，而反写少写等号会报错
+    console.log(a);//undefined
+    if(true) {
+        var a = 2;
+    }
+    console.log(a);//2
+    console.log(b);//undefined
+    if(false) {
+        var b = 3;
+    }
+    console.log(b);//undefined
+
+    for(var i = 0; i < 3; i++) {
+        console.log("i:",i);// 0 1 2
+    }
+    console.log(i);//3
+    //不会报错
+
+    //函数有三种定义方式：
+    //1 函数定义语句
+    //2 函数直接量表达式
+    //3 Function()构造函数
+
+    console.log(typeof NaN);//number
+    console.log(typeof Infinity);//number
+</script>
+</html>
