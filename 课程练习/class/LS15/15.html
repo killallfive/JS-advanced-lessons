@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // JavaScript是基于对象的继承方式
+    var obj = {
+        num: 1,
+        str: "hi",
+        sayHi: function() {
+            console.log(this.str);
+        }
+    };
+
+    var newObj = Object.create(obj);
+    console.log(newObj.__proto__ == obj);
+    console.log(newObj.num);
+    console.log(newObj.__proto__.__proto__);
+    console.log(newObj.__proto__.__proto__.__proto__);
+    newObj.sayHi();
+    
+    function Person(username, age) {
+        this.username = username;
+        this.age = age;
+    }
+    Person.prototype.sayHi = function() {
+        console.log(this.username);
+    }
+    var person1 = new Person("zhangsan", 30);
+    var person2 = new Person("lisi", 25);
+    console.log(person1.__proto__ == person2.__proto__);
+    console.log(person1.__proto__ == Person.prototype);
+    //person1,person2公用sayHi方法，节省内存空间
+    person1.sayHi();
+    person2.sayHi();
+
+    // Person.prototype == person.__proto__;
+    // Person.prototype.constructor == Person;
+    // Person.prototype.__proto__ == Object.prototype;
+    // Object.prototype.constructor == Object;
+    // Object.prototype.__proto__ == null;
+
+    // 定义一个车(car)的对象 height, width, weight
+    // 创建一个小轿车的(smallCar)对象，继承车相关的属性，自己具有 color, seatNum
+    // create方法，以及构造函数的形式
+
+    var car = {
+        height: 150,
+        width: 200,
+        weight: 2000
+    };
+    var smallCar = Object.create(car);
+    smallCar.color = "red";
+    smallCar.seatNum = 5;
+    console.log(smallCar);
+
+    function createSmallCar(color, seatNum) {
+        this.color = color;
+        this.seatNum = seatNum;
+    }
+    createSmallCar.prototype = car;
+
+    var smallCar = new createSmallCar("red", 4);
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    try {
+        // 监听的代码块
+        function abc(x, cb) {
+            console.log(x);
+            cb();
+        }
+        abc("xx", function() {
+            var arr = new Array(-1);
+        });
+    } catch (e) {
+        // 捕获到异常后的处理
+        console.log(e);
+        // abc("xx", function() {
+        //     var arr = new Array(-1);
+        // });
+    } finally {
+        // 无论是否捕获到异常都会执行
+    }
+</script>
+</html>

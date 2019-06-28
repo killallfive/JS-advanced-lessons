@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">jq ajax</button>
+</body>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    /*
+        ajax可以以异步的方式实现前后端数据的交互
+        前端通过发起ajex请求的方式，来从服务器端获取数据
+        请求方式：get请求、post请求
+        
+        在前端页面实现jQuery ajax请求
+        ajax请求指明请求的后端程序的地址
+        后端程序接收到请求，作出响应
+        前端接收后端程序的响应内容，并在前端使用
+
+        前后端文件必须都放在服务器上面
+    */
+    $("#btn").click(function() {
+        $.ajax({
+            url: "./sever.php",
+            type: "get",
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        })
+    })
+</script>
+</html>

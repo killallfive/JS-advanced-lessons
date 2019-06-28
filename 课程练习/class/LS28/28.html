@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let [, , third] = [1, 2, 3];
+    console.log(third);
+    /*
+        ...理解为剩余运算符，其他元素匹配完成后，
+        剩下的元素
+    */
+    let [head, ...tail] = [1, 2, 3, 4];
+    console.log(head, tail);
+    /*
+        当左侧结构元素个数大于右侧时
+        未匹配的变量会是undefined
+        ...跟的变量未匹配元素[]
+    */
+    let [d, e, ...f] = ['a'];
+    console.log(d, e, f);
+
+    let {bar, foo} = {foo: "foo1", bar: "bar1"};
+    console.log(bar, foo);
+    /*
+        对象解构赋值，根据键名来进行匹配，然后完成赋值
+    */
+    let str = new String("abcdef");
+    let [a, b, c, g] = str;
+    console.log(a, b, c, g);
+    let [h, i] = "ef";
+    console.log(h, i);
+
+    // number
+    let num = new Number(5);
+    console.log(num.toString);
+    let {toString: s1} = num;
+    console.log(s1);
+
+    function fn1({x = 0, y = 0} = {}) {
+        return [x, y];
+    }
+    console.log(fn1());
+    console.log(fn1({x:1, y:2}));
+
+    // let[x, y]=['a', 'b'];
+    // [y, x]=[x, y];
+    // console.log(x, y);
+
+
+    // function example(){
+    //     return[1, 2, 3];
+    // }
+    // let[a, b, c]=example();
+    // console.log(a, b, c);
+
+
+    let json1 = {
+        "username": "zhangsan",
+        "courseList": ["高等数学","大学英语"],
+        "age": 20
+    }
+    /*
+        JSON MATH都是对象，没有构造函数
+        JSON.parse()
+    */
+    let jsonStr = JSON.stringify(json1);
+    console.log(jsonStr);
+    json1 = JSON.parse(jsonStr);
+
+    let {username} = json1;
+    console.log(username);
+</script>
+</html>

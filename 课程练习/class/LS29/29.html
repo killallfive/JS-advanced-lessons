@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let str = "abcdef";
+    for(let i of str) {
+        console.log(i);
+    }
+    str.repeat(4);
+
+    let reg1 = /xyz/gi;
+    let reg2 = new RegExp("xyz", 'gi');
+    // let reg2 = new RegExp(/xyz/gi);
+    let reg3 = new RegExp(/xyz/gi, 'i');
+    console.log(reg1.flags);
+
+    let str1 = "aaa_aa_a";
+    let reg5 = /a+/g;
+    let reg6 = /a+/y;
+    console.log(reg5.exec(str1));
+    console.log(reg5.exec(str1));
+    console.log(reg6.exec(str1));
+    console.log(reg6.exec(str1));
+
+    console.log(Array.from("abcdef"));
+    function fn1() {
+        Array.from(arguments);
+    }
+    fn1(1, 2, 3);
+
+    /*
+        Array.of将单个的元素转化为数组
+    */
+    console.log(Array.of(1, 2, 3)); 
+
+    /*
+        复制数组里面的元素到数组的特定位置上
+
+        arr1.copyWithin(target, start, end);
+
+        target: 复制的目标位置
+        start: 复制元素的起始位置
+        end: 复制元素的结束位置
+
+        Array.prototype.find
+        遍历数组中的元素，验证是否满足回调函数的验证条件
+        （回调函数的返回值）
+        返回满足条件的第一个数组元素
+    */
+    var arr1 = [1, 2, 3, 4, 5, 6];
+    console.log(arr1.copyWithin(0, 4, 5));
+    let e1 = arr1.find(function(element) {
+        return element > 19;
+    })
+    console.log(e1);
+    /*
+        Array.prototype.findIndex
+        同上，但返回值是索引值
+    */
+    let e1Index = arr1.findIndex(function(element) {
+        return element > 29;
+    })
+    console.log(e1Index);
+    /*
+        fill(value, start, end)
+        向数组特定的起始位置和结束位置之间填充value
+        key() 获取键的值
+        values 获取数组具体值
+    */
+    let username = "lily";
+    /*
+        ES6里面对象的结构进行了简化
+        属性可以写成变量的形式
+        函数省略function, 函数名() {}
+    */
+    let obj = {
+        username,
+        fn11() {
+            console.log(this.username);
+        }
+    }
+
+    let bar = "foo";
+    let obj1 = {
+        [bar]: "male"
+    }
+    console.log(obj1);
+    
+    let obj2 = {username: "zhangsan"};
+    let obj3 = {age: 20};
+    console.log(Object.assign(obj2, obj3));
+    // console.log(obj2.keys());
+    // console.log(obj2.values());
+    // console.log(obj2.entries());
+
+    var obj = {
+        objName: "obj1",
+        showName: function() {
+            var intervalId = setTimeout(() => {
+                console.log(this);
+                console.log(this.objName);
+            }, 3000);
+        }
+    }
+    obj.showName();
+</script>
+</html>

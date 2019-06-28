@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*验证压缩文件格式*/
+    var reg = /(.*)\.(rar|zip|7zip|tgz)$/;
+    /*
+        (.+) 压缩文件的名字
+        \. 对.进行转义，表示普通字符.
+        (rar|zip|7zip|tgz) 从其中任取一个类型
+        $ 表示以前面的分组来结尾
+    */
+
+    var reg1 = /^#[a-fA-F0-9]{6}$/;
+    /*
+        ^# 表示的是以#开头
+        [a-fA-F0-9] 表示集合，可以从其中任取一个字符 a-f A-f 0-9
+        {6} 表示之前的字符出现6次
+        $ 表示必须以前面的字符结尾
+    */
+</script>
+</html>

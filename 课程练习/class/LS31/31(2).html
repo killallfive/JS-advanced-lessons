@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let s1 = new Set([1, 2, 3, 4, 5, 6, 1, 2, 3]);
+    console.log(s1);
+    for(var i of s1) {
+        console.log(i);
+    }
+
+    let m1 = new Map([
+        ["username", "zhangsan"],
+        ["age", 20],
+        ["sex", "male"]
+    ]);
+    console.log(m1.size);
+    for(let i of m1) {
+        console.log(i);
+    }
+    m1.set("weight", "60kg");
+    m1.get("username");
+    m1.delete("username");
+    m1.has("sex");
+    for(let j of m1.keys()) {
+        console.log(j);
+    }
+</script>
+</html>

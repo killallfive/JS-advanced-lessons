@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>用户名：</td>
+            <td>
+                <input type="text" name="username" id="username" />
+                <span class="error"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td>
+                <input type="password" name="pwd" id="pwd">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" value="登录" />
+            </td>  
+        </tr>
+    </table>
+</body>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    /*
+        val() 用于设置或者获取表单元素的value值
+        html() 用于设置或获取双标记标签元素内部的html内容
+        css() 用于设置选中元素的样式 css("样式名", "样式值")
+        css({"样式名": "样式值","样式名": "样式值"})
+    */
+    $("#username").blur(function() {
+        var inputVal = $(this).val();
+        if(inputVal == "") {
+            $(".error").html("用户名不能为空");
+            $(".error").css({
+                "color": "purple",
+                "font-size": "20px"
+            });
+        } else {
+            $(".error").html("");
+        }
+    })
+    $("#btn").click(function() {
+        $("#img1").attr("src", "2.jpg");
+        $("#img1").attr("title", "这是一张图片");
+        alert($("#img1").attr("title"));
+        // 移除特定属性
+        $("#img1").removeAttr("title");
+    })
+    $("#btn1").click(function() {
+        $("#img1").addClass("imgborder");
+        $("#img1").removeClass("imgborder");
+    })
+</script>
+</html>

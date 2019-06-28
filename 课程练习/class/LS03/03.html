@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <p>123</p>
+</body>
+<script>
+    //基本数据类型，在操作过程中，会有自动装箱过程
+    //生成不可见的临时对象，并且其会在使用完成后自动释放
+    var num = 10;
+    num.toString();
+    //相当于装箱操作
+    // var num = 10;
+    // var numObject = new Number(num);
+    // numObject.toString();
+
+
+    num.p = 10;
+    var t = num.p;
+    console.log(t);
+
+    var num1 = 11.26;
+    var numobj2 = new Number(num1);
+    console.log(numobj2);
+
+    //toFixed属于Number原型链上的方法
+    var x1 = (345.67).toFixed(1);
+    console.log(x1);
+
+    var n1 = 12345.6789;
+    console.log(n1.toFixed(2));
+    console.log(n1.toPrecision(2));
+    //将数字转化为一个字符串
+    console.log(n1.toString());
+    console.log(n1.toExponential(2));
+
+    var str1 = "student";
+    var strobj1 = new String(str1);
+    console.log(strobj1);
+
+    //charAt 返回特定索引位置字符
+    console.log("abcde".charAt(2));
+
+    console.log("A".localeCompare("B"));
+
+    //number string boolean
+    //Number() String() Boolean()
+
+    var num2 = 20;
+    console.log(num2.__proto__);
+    console.log(Number.prototype);
+    //以上二者完全一样
+
+    console.log(String.fromCharCode(97,98,99));
+
+    var str = "abcdefgh";
+    //返回特定索引位置的字符
+    console.log(str.charAt(1));
+    //返回特定索引位置的字符的unicode码
+    console.log(str.charCodeAt(0));
+    //slice(截取起始位置，截取的结束位置(不包含))
+    console.log(str.slice(1,-1));
+    //substr(截取起始位置，截取的长度)
+    console.log(str.substr(2,3));
+    //substring(截取起始位置，截取结束位置)
+    //如果起始值 > 结束值  ==>  两个值互换位置
+    //如果有超出索引位置 0 -- str.length - 1(自动截断)
+    //如果起始值 < 0  ==>  起始值 = 0
+    console.log(str.substring(0,3));
+    console.log(str.substring(-1,3));
+    console.log(str.substring(3,0));
+    console.log(str.substring(3));
+    //split(特定的字符,限定元素个数(可不写))
+    //将字符串以特定字符分割并作为数组元素生成数组
+    var sstr = "abc*def*gh";
+    console.log(sstr.split("*",2));
+    //trim()去除字符串两边的空白字符，内部的无法去除
+    var strr = "    abc  d  ";
+    console.log(strr.trim());
+    //toUpperCase( )把字符串转化成大写
+    //toLowerCase( )把字符串转化成小写
+    var sstr1 = "abc";
+    var sstr1 = "ABC";
+    console.log(sstr1.toUpperCase());
+    console.log(sstr1.toLowerCase());
+
+    var n1 = 12345.6789;
+    console.log(n1.toFixed(2));//12345.68
+    console.log(n1.toPrecision(2));//1.2e+4
+    console.log(n1.toString());//12345.6789
+    console.log(n1.toExponential(2));//1.23e+4
+
+    console.log(NaN === NaN);//false
+    //NaN和任何值都不相等，包括它本身
+    console.log(isNaN("12,3"));//true
+    //isNaN接收的参数是数字返回false否则返回true
+    console.log(Math.floor(3.8));//3
+    console.log(Math.floor(-3.8));//-4
+    //Math.floor()向下取整
+    console.log(Math.ceil(3.2));//4
+    console.log(Math.ceil(-3.2));//-3
+    //Math.ceil()向上取整
+    console.log(Math.round(-3.2));//-3
+    console.log(Math.round(-3.5));//-3
+    console.log(Math.round(-3.8));//-4
+    //Math.round()四舍五入
+
+    console.log("A" > "a");//false
+    console.log("B".localeCompare("A"));//1
+    console.log("A".localeCompare("A"));//0
+    console.log("A".localeCompare("B"));//-1
+</script>
+</html>

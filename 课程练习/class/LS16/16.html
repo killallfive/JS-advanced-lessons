@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 非严格模式下，this指向windows对象
+    function Point(x, y) {
+        this.x = x;
+        this.y = y;
+        this.moveTo = function(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+    var p = new Point(10, 10);
+
+    // 对象内部的函数，存在嵌套关系，内部函数的this指向windows对象
+    var point = {
+        x: 0,
+        y: 0,
+        moveTo : function(x, y) {
+            function moveToX(x) {
+                this.x = x;
+            }
+            function moveToY(y) {
+                this.y = y;
+            }
+            // 切换moveToX函数的调用主体，并且执行moveToX
+            moveToX.call(this.x);
+            moveToY.call(this.y);
+        }    
+    }
+    point.moveTo(10, 10);
+    console.log(point);
+    
+    
+</script>
+</html>

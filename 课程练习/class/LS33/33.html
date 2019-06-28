@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function createIterator(arr) {
+        var i = 0;
+        return {
+            next: function() {
+                return i < arr.length ?
+                {value: arr[i++], done: true} :
+                {value: undefined, done: false};
+            }
+        }
+    }
+    var iterator = createIterator([1, 2, 3, 4]);
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+
+    let arr1 = [1, 2, 3, 4, 5, 6];
+    for(let i of arr1) {
+        console.log(arr1[i]);
+    }
+
+    // let m1 = new Map([1, 2, 3, 1, 4]);
+    // for(let i of m1) {
+    //     console.log(m1[i]);
+    // }
+
+    // arguments
+
+    /*判断数据结构能否被遍历器所遍历*/
+    let arr2 = [1, 2, 3];
+    console.log(arr2[Symbol.iterator]);
+
+    let obj = {};
+    obj[Symbol.iterator] = function*() {
+        yield 1;
+        yield 2;
+        yield 3;
+    }
+    for(let i of obj) {
+        console.log(i);
+    }
+
+    let str = "abcdef";
+    for(let i of str) {
+        console.log(i);
+    }
+
+    // promise
+    setTimeout(function() {
+        console.log("时间到");
+    }, 1000)
+    console.log("同步代码1");
+    console.log("同步代码2");
+
+    /*
+        new Promise(function(resolve, reject) {
+            异步操作
+            resolve();异步操作成功时的调用
+            reject();异步操作失败时调用
+        }).then(function() {
+            其实就是resolve函数的定义
+        }, function() {
+            其实就是reject函数的定义
+        })
+    */
+    new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            console.log("时间到");
+            // resolve是异步操作成功时的回调函数
+            resolve("hello");
+        }, 3000);
+    }).then(function(val) {
+        console.log(val);
+    }, function() {
+
+    }).catch(function() {
+        // 捕获异常的  
+    }).finally(function() {
+        console.log("不论如何都会执行");
+    });
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var date1 = new Date();
+    var year = date1.getFullYear();
+    var month = date1.getMonth();
+    var date2 = new Date(year, month);
+    console.log(date2);
+
+    // 指明日期时间的字符串
+    var date3 = new Date("2019-05-05");
+    console.log(date3);
+
+    // 指明一个毫秒为单位的数字类型
+    var date4 = new Date(Date.now());
+    console.log(date4);
+
+    /*
+        本地时间：当地所出时区的标准时间
+        世界标准时：UTC(格林威治时间) GMT
+    */
+
+    var seconds = Date.parse("2019-05-05");
+    console.log(seconds);
+    var date5 = new Date(seconds);
+    console.log(date5);
+
+    var date6 = new Date();
+    var seconds2 = Date.parse(date6);
+    console.log(seconds > seconds);
+</script>
+</html>

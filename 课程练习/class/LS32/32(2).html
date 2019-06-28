@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*继承的实现方式*/
+
+    let obj1 = {"x": 1};
+    let obj2 = Object.create(obj1);
+    console.log(obj2.x);
+
+    let obj3 = {"y": 2};
+    let obj4 = {};
+    obj4.__proto__ = obj3;
+
+    function fn1() {
+        this.x = 1;
+    }
+    fn1.prototype.show = function() {
+        console.log(this.x);
+    }
+    let obj5 = new fn1();
+</script>
+</html>

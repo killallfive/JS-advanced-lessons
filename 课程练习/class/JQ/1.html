@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            /* background: #ddd; */
+            margin-top: 10px;
+        }
+        #container {
+            height: 400px;
+            width: 800px;
+            margin: 0 auto;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://p0.ssl.qhimgs1.com/sdr/400__/t01497383325fc41f94.jpg" alt="">
+    <div>层1</div>
+    <div>层2</div>
+    <div>层3</div>
+    <table>
+        <tr>
+            <td>用户名：</td>
+            <td>
+                <input type="text" name="username" id="username">
+            </td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td>
+                <input type="password" name="pwd">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" value="登录">
+            </td>
+        </tr>
+    </table>
+    <div id="container">
+
+    </div>
+</body>
+<script src="http:/code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    // $("img").mouseover(function() {
+    //     // this.style.border = "1px solid red";
+    //     $(this).css("border", "1px solid red");
+    // }).mouseout(function() {
+    //     $(this).css("border", "");
+    // })
+    // $("div").mousemove(function() {
+    //     $(this).css("background", "blue");
+    // }).mouseout(function(){
+    //     $(this).css("background", "#ddd");
+    // }).click(function() {
+    //     $(this).css("background", "red");
+    // })
+    // $("div").mouseout(function() {
+    //     $(this).css("background", "#ddd");
+    // })
+    // $("div").click(function() {
+    //     $(this).css("background", "red");
+    // })
+
+    /*
+        $(选择器).val();
+        $("html标记")
+        $(选择器).append(); 向选中元素内部添加一个新元素
+        $(选择器).remove(); 将特定元素从页面结构中移除
+    */
+    /*
+        1. 向特定元素的后面插入新的节点
+        after() insertAfter()
+        2. 向特定元素的前面插入新的节点
+        before insertBefore()
+        3. 向特定元素标签内部最后的位置添加新的节点
+        append() appendTo()
+        4. 向特定元素标签内部最前的位置添加新的节点
+        prepend() prependTo()
+    */
+    $("#username").blur(function() {
+        var inputVal = $(this).val();
+        var errorTip = $("<span class='error'>用户名不能为空</span>");
+        if(inputVal == "") {
+            $(this).parent().append(errorTip);
+        }
+        else {
+            $(".error").remove();
+        }
+    })
+</script>
+</html>

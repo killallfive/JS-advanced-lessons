@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var obj = {
+        x : 0,
+        //test内部的this指向调用该方法的对象
+        test : function() {
+            console.log(this.x);
+        }
+    }
+    obj.test();
+
+    var objA = {"objName" : "AAA"};
+    var objB = {"objName" : "BBB"};
+    objA.foo = function() {
+        console.log(this.objName);
+    }
+    objA.foo();
+    //方法名.call(对象) 可以切换方法调用的对象
+    //目前与apply()一样
+    objA.foo.call(objB);
+
+    //构造函数的调用
+    function Person(username) {
+        this.username = username;
+        // this.sayHi = function() {
+        //    console.log(this.username);
+        // }
+        // 省略的代码由原型链代替
+    }
+
+    Person.prototype.sayHi = function() {
+        console.log(this.username);
+    }
+    
+    var person = new Person("zhangsan");
+    console.log(person.__proto__ === Person.prototype);
+    person.sayHi();
+
+    function test1() {
+        var s = "";
+        //arguments获取函数传入的实参，是个类数组对象
+        for(var i = 0; i < arguments.length; i++) {
+            s += arguments[i];
+        }
+        return s;
+    }
+    console.log(test1("hello", "world", "!"));
+
+    var a = 2;
+    function foo(x) {
+        x = 1;
+        console.log(a, x);
+    }
+    foo(a);
+    console.log(a);
+
+    var obj1 = {x : 0};
+    function bar(obj11) {
+        obj11.x = 2;
+        console.log(obj1, obj11);
+    }
+    bar(obj1);
+
+    //定义一个函数完成对变量的复制过程，生成新的变量，并返回
+    //引用类型时，数组、对象
+    var objj = {"username" : "zhangsan", "age" : 20};
+    function copyArg(arg1) {
+        var copy;
+        switch(true) {
+            case (arg1 instanceof String):
+                copy = arg1;
+                break;
+            case (arg1 instanceof Number):
+                copy = arg1;
+                break;
+            case (arg1 instanceof Boolean):
+                copy = arg1;
+                break;
+            case (arg1 instanceof Array):
+                copy = [];
+                for(var i = 0; i < arg1.length; i++) {
+                    copy[i] = arg1[i];
+                }
+                break;
+        }
+    }
+    console.log(objj);
+
+    // typeof无法更细致来区分引用类型
+    var str = "abc";
+    var arr1 = ['a', 'b', 'c'];
+    var date1 = new Date();
+    console.log(typeof arr1);
+    console.log(typeof date1);
+    // 对象 instanceof 构造函数
+    // 1. 看这个对象能否用该构造函数实例化得到，能的话结果为true
+    // 2. 
+    var arr2 = [];
+    var arr2 = new Array();
+    arr2 instanceof Array;//true
+</script>
+</html>

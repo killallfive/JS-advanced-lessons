@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>123</p>
+</body>
+<script>
+    //基本数据类型，在操作过程中，会有自动装箱过程
+    //生成不可见的临时对象，并且其会在使用完成后自动释放
+    var num = 10;
+    num.toString();
+    //相当于装箱操作
+    var num = 10;
+    var numObject = new Number(num);
+    numObject.toString();
+    
+    num.p = 10;
+    var t = num.p;
+    console.log(t);
+
+    //typeof用于值类型检测
+    console.log(typeof 123);
+    console.log(typeof true);
+    console.log(typeof "abc");
+    console.log(typeof {name:"Mike",age:20});
+    console.log(typeof function foo(){});
+
+    //课外思考
+    console.log(typeof Array);//function
+    console.log(typeof Function);//function
+    console.log(typeof Date);//function
+    console.log(typeof Number);//function
+    console.log(typeof Math);//object
+    console.log(typeof JSON);//object
+
+    //类型检测 instanceof （左侧操作数为对象，右侧操作数为原型链中的一个类型时，返回为true）
+    var b = [12,34,{},""];
+    console.log(b instanceof Array);//true
+    console.log(b instanceof Object);//true
+    var Person = function(){
+    //...
+    };
+    var p1 = new Person();
+    console.log(p1 instanceof Person);//true
+    console.log(p1 instanceof Object);//true
+
+    //window.a为全局对象
+    //以下两个对象分配的区不同，最终结果也不同
+    var a = 123;
+    function foo1(x){
+	    x = 345;
+    }
+    foo1(a);
+    console.log(a);
+    var a = {y:123};
+    function foo2(x){
+	    x.y = 345;
+    }
+    foo2(a);
+
+    console.log(a.y);
+
+    var a4 = new Number(200);
+    var b4 = 200;
+    console.log(a4 == b4);//true
+    console.log(a4 === b4);//false
+
+    var a5 = {x:1,y:2};
+    var b5 = {x:1,y:2};
+    console.log(a5 === b5);//false
+    console.log(a5.x === a5.x);//true
+
+    var arr = [1,2,3,4];
+    console.log(arr.length);//4
+    arr.length = 1;
+    console.log(arr.length,arr);//1 [1]
+    //Part 1
+    console.log(Boolean(undefined));//false
+    console.log(Boolean(null));//false
+    console.log(Boolean(0));//false
+    console.log(Boolean(NaN));//false
+    console.log(Boolean(1));//true
+    console.log(Boolean(""));//false
+    console.log(Boolean("abc"));//true
+    console.log(Boolean({}));//true
+    if(new Boolean(false)){
+        console.log("执行");
+    }//执行
+    //Part 2
+    console.log(Number(undefined));//NaN
+    console.log(Number(null));//0
+    console.log(Number(true));//1
+    console.log(Number(false));//0
+    console.log(Number(""));//0
+    console.log(Number("abc"));//NaN
+    console.log(Number("123.345xx"));//NaN
+    console.log(Number("32343,345xx"));//NaN
+    console.log(Number({x:1,y:2}));//NaN
+
+    console.log(parseFloat("123.345xx"));//123.345
+    console.log(parseFloat("32343,345xx"));//32343
+    console.log(parseInt("123.345xx"));//123
+    console.log(parseInt("32343,345xx"));//32343
+
+    //Part 3
+    console.log(String(undefined));//undefined
+    console.log(String(null));//null
+    console.log(String(true));//true
+    console.log(String(false));//false
+    console.log(String(0));//0
+    console.log(String(234));//234
+    console.log(String({x:1,y:2}));//[object Object]
+</script>
+</html>

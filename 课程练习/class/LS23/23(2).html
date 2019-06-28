@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        JSON.stringify(js对象)
+        可以将js对象数组，结构转化为json字符串
+
+        1. 作为前后端交互时，数据传输（主要作用）
+        2. 作为数组存储
+    */
+    var jsObject = {
+        "username" : "zhangsan",
+        "age" : 20,
+        "address" : {"add" : "石家庄" , "addcode" : "11322"}
+    }
+    var jsonStr = JSON.stringify(jsObject, function(k ,v) {
+        if(typeof v == "number") {
+            return v * 2;
+        }
+        return v;
+    });
+    console.log(jsonStr);
+    console.log(typeof jsonStr);
+
+    var jsObject2 = JSON.parse(jsonStr, function(k ,v) {
+        console.log(k ,v);
+    });
+    // console.log(jsObject2);
+    // console.log(typeof jsObject2);
+</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var objProto = {z : 3};
+    var obj = Object.create(objProto);
+    obj.x = 1;
+    obj.y = 2;
+    console.log(obj.x, obj.y, obj.z);// 1 2 3
+    console.log(obj.toString);
+    // 对象里面某些属性和方法是无法被遍历到的
+    for(var i in obj) {
+        console.log(i);
+        console.log(obj[i]);
+    }
+
+    var oobj = {x : 1};
+    Object.defineProperty(oobj, 'y', {enumerable : false});
+    for(var i in oobj) {
+        console.log(i, oobj[i]);
+    }
+    (function() {
+        var person = {'name':"jack"};
+        Object.defineProperty(person,'name',{
+            //name属性是不可修改的
+            writable:false,
+            //是否可配置，定义属性能否删除
+            configurable:false,
+            //定义可枚举，定义属性能否被遍历到
+            enumerable:true,
+            //定义属性值
+            value:"mike"
+        });
+        person.name = "lili";
+        console.log(person.name);
+    })()
+    
+    var objj = {x: 0};
+    Object.defineProperty(objj, "y", {
+        value: 1,
+        enumerable: true,
+        writable: true,
+        configurable: true
+    })
+    // 获取特定对象的属性描述符
+    console.log(Object.getOwnPropertyDescriptor(objj, 'y'));
+</script>
+</html>

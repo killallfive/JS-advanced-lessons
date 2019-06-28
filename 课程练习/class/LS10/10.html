@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var a = 1;
+    function fn1() {
+        var b = 2;
+        var c = 3;
+        function fn2() {
+            var c = 30;
+            var d = 4;
+            console.log(c);
+        }
+        fn2();
+        console.log(c);
+    }
+    fn1();
+
+    var name = "Jack";
+    function foo() {
+        name = "bill";
+        console.log(name);
+    }
+    function bar() {
+        var name = "mike";
+        foo();
+        console.log(name);
+    }
+    bar();
+
+    if(true) {
+        var a = 2;
+    }
+    console.log(a);
+
+    // ES5没有块级作用域
+    // ES6
+    if(true) {
+        let b = 3;
+    }
+    // console.log(b);
+
+    // 上下文，当某行代码执行过程中，
+    // 它的上下文环境包含了变量、函数调用栈、this指向
+    var x = 5;
+    var y = 6;
+    function foo1() {
+        var a = 1;
+        var b = 2;
+        function bar1() {
+            var c = 3;
+            var d = 4;
+        }
+        bar1();
+    }
+    foo1();
+    
+</script>
+</html>

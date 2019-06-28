@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*之前的继承*/
+    // function Child(x, y) {
+    //     this.x = x;
+    //     this.y = y;
+    // }
+    // function Parent(x, y, z) {
+    //     Child.call(this, x, y);
+    //     this.z = z;
+    // }
+    // let p1 = new Parent(1, 2, 3);
+    // console.log(p1);
+
+    /*
+        子类继承父类 extends
+        在子类的构造函数里面super指向父类的构造函数
+        继承的子类构造函数中，必须得在super()调用后才可以运用this
+
+        super在子类的原型方法中，指向父类的prototype·
+    */
+    class Parent {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+    class Child extends Parent {
+        constructor(x, y, z) {
+            super(x, y);
+            this.z = z;
+        }
+        show() {
+            console.log(this);
+        }
+    }
+    let c1 = new Child(1, 2, 3);
+    console.log(c1);
+</script>
+</html>

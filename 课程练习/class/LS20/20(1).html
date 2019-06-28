@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        /正则表达式的文本部分/正则表达式的标识符
+        [xyz] 指匹配中括号中任意的字符
+        标识符：
+        g是否全局的检索,匹配所有还是匹配一个
+        i表示是否忽略大小写
+        .可以表示任意一个字符
+    */
+    var reg1 = /[bcf]at/gi;
+    var reg11 = new RegExp(/[bcf]at/, "gi");
+    var reg111 = new RegExp("[bcf]at", "gi");
+
+    var reg2 = /adf*/gi;
+    var str = "fat cat bat fat ojiidd lppqw adffff ad adf"
+    var arr = str.match(reg2);
+    console.log(arr);
+
+    var reg3 = /a.c/gi;
+    var str1 = "abcdf ojiidd lppqw adffff ad adf adc"
+    var arr1 = str1.match(reg3);
+    console.log(arr1);
+    /*
+        字符类别：
+        \d表示的是任意的阿拉伯数字 [0-9]
+        \s表示的是空格
+        .表示的是任意的一个字符
+        \w [A-Za-z0-9]      
+        \D表示在特定位置上不是一个阿拉伯数字
+    */
+   var reg4 = /a\dc/gi;
+   var str2 = "a2c a3c abc";
+   var arr2 = str2.match(reg4);
+   console.log(arr2);
+
+   /*
+        [xyz] 从中括号的字符集中任取一个字符
+        [^xyz] 排除中括号字符集合中的字符
+        ^ 匹配开始的位置
+        $ 匹配结束的位置
+        * 表示之前的字符出现0次或多次
+        ? 表示之前的字符出现0次或1次
+        + 表示之前的字符出现1次或多次
+   */
+   var reg5 = /[^abc]tf/gi;
+   var str3 = "abc ahd ghi atf ktf";
+   console.log(str3.match(reg5));
+
+    /*
+        分组可以看做当前正则表达式的子规则，
+        分组匹配得到的内容，可以在exec方法
+        调用返回结果中查看
+    */
+   var reg6 = /(ab\d)(\def)\d/gi;
+   var str4 = "ab31ef12";
+   console.log(reg6.exec(str4));
+
+    /*
+        反向引用，通过 \m 来引用前面出现的分组
+        m表示前面出现的第几个分组
+    */
+   var reg7 = /(ss)a\1/gi;
+   var reg8 = /(\d)a(\d)/gi;
+   var str5 = "ssasss";
+   console.log(str5.replace(reg7,"x"));
+   console.log(str5);
+
+   /*
+        String.prototype
+
+            str.replace(reg,"替换的内容");
+            str.match(正则表达式)
+                返回值是一个数组或者是null
+                [整个正则匹配到的内容，分组匹配到的内容，开始匹配位置的索引]
+            str.search(正则表达式)
+                在str中检索符合正则表达式规则的内容，
+                如果检索到了返回其第一个字符出现的位置，
+                如果没有返回-1
+
+        RegExp.prototype
+            reg.test(字符串)
+                验证字符串是否符合正则表达式规则，符合返回true，不符合返回false
+            reg.exec(字符串)
+                返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null
+   */
+   var reg = /(ss)abc\d/gi;
+   var str6 = "kkafd ssabc2";
+   console.log(str6.match(reg));
+</script>
+</html>

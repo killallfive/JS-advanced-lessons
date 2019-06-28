@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table width="400" height="400" border="1" align="center">
+        <tr class="even">
+            <td id="td1"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="odd">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+        </tr>
+        <tr class="even">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+        </tr>
+        <tr class="odd">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+        </tr>
+    </table>
+    <input type="text">
+    <input type="file">
+    <input type="button">
+    <input type="submit">
+    <input type="checkbox">
+</body>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    /*
+        jquery.min.js 压缩版的，一般用于生产环境
+        jquery.js 未压缩，一般用于开发环境
+    */
+    /*
+        $("") jquery包装集
+        
+        选择器：
+        id选择器
+        类选择器
+        标签选择器
+    */
+
+    // $("tr").css("background", "red");
+
+    // $("td:first").css("background", "red");
+    // $("td:last").css("background", "green");
+    $("td:even").css("background", "blue");
+    $("td:odd").css("background", "yellow");
+
+    /*
+        eq(index) 选中特定索引值的元素
+        gt(index) 选中索引值大于index的元素
+        lt(index) 选中索引值小于index的元素
+        not(selector) 从特定集合中排除一些元素
+    */
+    $("td:eq(0)").css("background", "purple");
+    $("td:gt(1)").css("background", "white");
+    $("td:lt(3)").css("background", "black");
+    $("td:not(#td1)").css("background", "pink");
+    
+    $(":text").css("background", "red");
+</script>
+</html>

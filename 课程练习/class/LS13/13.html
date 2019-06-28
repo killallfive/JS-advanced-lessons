@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    /*  对象 instanceof 构造函数
+        1. 判断对象能否使用该构造函数实例化得到
+        2. 判断对象的原型链上能否找到该函数的原型
+
+        对象.__proto__.__proto__(长度不确定) == 构造函数.prototype
+    */
+
+    console.log(Object instanceof Function);// true
+    console.log(Object.__proto__ == Function.prototype);// true
+
+    console.log(Object instanceof Object);// true
+    console.log(Object.__proto__.__proto__ == Object.prototype);// true
+
+    function Person(username, age) {
+        this.username = username;
+        this.age = age;
+    }
+    var p = new Person("zhangsan", 20);
+
+    console.log(p.__proto__ == Person.prototype);// true
+
+    var o = {
+        _x : 1,
+        get x() {
+            return this._x;
+        },
+        set x(val) {
+            this._x = val;
+        }
+    }
+    o.x = 10;
+    console.log(o.x, o._x);// 10 10
+
+    // 新的创建对象的形式
+    var obj = {
+        "username" : "zhangsan",
+        "age" : 20
+    };
+    var obj1 = Object.create(obj);
+    console.log(obj1);
+
+    function Person1(username, age) {
+        this.username = username;
+        this.age = age;
+    }
+    Person1.prototype.sayHi = function() {
+        console.log(this.uesrname);
+    }
+    var person1 = new Person1("zhangsan", 20);
+    console.log(person1.__proto__ == Person1.prototype);
+    var person2 = new Person1("lisi", 18);
+    person1.sayHi();
+    person2.sayHi();
+    /*
+        1. var obj1 = {
+            属性名 ： 属性值,
+            方法名 ： 方法
+        }
+        2. var obj1 = {}; var obj2 = Object.create(obj1);
+        3. function Person() {}; var person1 = new Person();
+    */
+</script>
+</html>
